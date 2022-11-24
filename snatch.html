@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результат подхода</title>
+    <style>
+        .calculator__section_wrapper {
+            display: flex;
+        }
+        .calculator__section {
+            padding-right: 20px;
+            width: 100%;
+        }
+        @media (max-width: 800px) {
+            .calculator__section_wrapper {
+                flex-direction: column;
+            }
+            .calculator__section {
+            width: 100%;
+        }
+
+        }
+
+        .calculator__section > div {
+            margin-top: 0.5rem;
+        }
+        button {
+            margin-top: 0.8rem;
+        }
+        .calculator {
+            padding: 20px;   
+            }
+    </style>
+</head>
+
+<body>
+
+    <form class='calculator' id='calculator'>
+        <h1 class='calculator__header'>Рывок штанги <a href="clean_and_jerk.html">↔</a></h1>
+
+        <div class='calculator__section_wrapper'>
+        <div class='calculator__section'>
+            <div>
+                <input type="checkbox" id="criteria1" name="criteria1" class='criteria' data-weight="1.5">
+                <label for="criteria1">Гриф нарушил вертикальную прямую (5 см. от ног или туловища)</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="criteria2" name="criteria2" class='criteria' data-weight="0.5">
+                <label for="criteria2">Смещение веса на носки или пятки в опорных фазах</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="criteria3" name="criteria3" class='criteria' data-weight="0.5">
+                <label for="criteria3">Смещение веса влева или вправо в опорных фазах</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="criteria4" name="criteria4" class='criteria' data-weight="0.5">
+                <label for="criteria4">Колени сведены уже стоп в тяге</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="criteria5" name="criteria5" class='criteria' data-weight="0.5">
+                <label for="criteria5">Колени сведены уже стоп при вставании</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="criteria6" name="criteria6" class='criteria' data-weight="1">
+                <label for="criteria6">Руки не синхронны</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="criteria7" name="criteria7" class='criteria' data-weight="0.5">
+                <label for="criteria7">Плечи сведены вперед в тяге</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="criteria8" name="criteria8" class='criteria' data-weight="0.5">
+                <label for="criteria8">Колени выступают вперёд носков</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="criteria9" name="criteria9" class='criteria' data-weight="1">
+                <label for="criteria9">Руки сгибаются в тяге</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="criteria10" name="criteria10" class='criteria' data-weight="1">
+                <label for="criteria10">Плечи сгибаются или разгибаются при фиксации</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="criteria11" name="criteria11" class='criteria' data-weight="1">
+                <label for="criteria11">Поясница сгибается в тяге</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="criteria12" name="criteria12" class='criteria' data-weight="0.5">
+                <label for="criteria12">Грудь сгибается в тяге</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="criteria13" name="criteria13" class='criteria' data-weight="0.5">
+                <label for="criteria13">Поясница или грудь сгибаются при фиксации и вставании</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="criteria14" name="criteria14" class='criteria' data-weight="0.5">
+                <label for="criteria14">Фиксация не на уровне затылка</label>
+            </div>
+        </div>
+        </div>
+            <button type='reset' id='resetButton'>Сбросить</button>
+
+        <div class='calculator__results'>
+            <h2>Итог: <span class='calculator__results__number' id='results_number'>10</span></h2>
+        </div>
+
+    </form>
+
+    <script type="text/javascript">
+
+
+        // Nodes
+        const form = document.getElementById('calculator');
+        const inputs = Array.from(form.getElementsByClassName('criteria'));
+        const resetButton = document.getElementById('resetButton');
+        const result = document.getElementById('results_number');
+        
+        //events 
+        inputs.map((input) => input.addEventListener('change', caltulate))
+        resetButton.addEventListener('click', resetForm)
+
+        //calculating function
+        function caltulate() {
+            const resultValue = inputs.filter((cur) => cur.checked)
+                                      .reduce((acc, cur) => acc - parseFloat(cur.dataset.weight), 10)
+            result.textContent = resultValue
+        }
+
+        //resetform
+        function resetForm(e) {
+            e.preventDefault();
+            form.reset();
+            caltulate();
+        }
+
+    </script>
+</body>
+
+</html>
