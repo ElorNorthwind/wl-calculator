@@ -46,12 +46,11 @@
         }
         .calculator__section_wrapper {
             display: flex;
+            flex-direction: column;
         }
         .calculator__section {
             padding: 20px;
-            width: 50%;
         }
-
 
         .calculator__section input[type='checkbox'] {
             accent-color: crimson;
@@ -59,21 +58,20 @@
         .calculator__section input[type='checkbox']:checked + label {
             color: crimson;
             }
-            
-        @media (max-width: 800px) {
-            .calculator__section_wrapper {
-                flex-direction: column;
-            }
-            .calculator__section {
-            width: 100%;
-        }
 
-        }
-
-        .calculator__section > div {
+            .calculator__section > div {
             margin-top: 0.5rem;
         }
 
+
+        @media (min-width: 800px) {
+            .calculator__section_wrapper {
+                flex-direction: row;
+            }
+            .calculator__section {
+            width: 50%;
+        }
+        }
     </style>
 </head>
 
