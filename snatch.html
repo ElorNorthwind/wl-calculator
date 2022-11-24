@@ -6,12 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Результат подхода</title>
     <style>
+        body {
+            background-color: lightgrey;
+            padding: 0;
+            margin: 0;
+        }
+        .calculator   {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1200px;
+            background-color: white;
+        }          
+
+        h2 {
+            margin: 0;
+        }
+
+        .calculator__header {
+            margin: 0;
+            background-color: bisque;
+            padding: 20px;   
+        }
+
+        .calculator__footer {
+            margin: 0.5rem 0;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background-color: bisque;
+            padding: 10px;
+            position: sticky;
+            bottom: 0;
+            /* width: 100%; */
+   
+            left: 0;
+            right: 0;
+        }
         .calculator__section_wrapper {
             display: flex;
         }
         .calculator__section {
-            padding-right: 20px;
-            width: 100%;
+            padding: 20px;
+            width: 50%;
         }
         @media (max-width: 800px) {
             .calculator__section_wrapper {
@@ -26,12 +64,7 @@
         .calculator__section > div {
             margin-top: 0.5rem;
         }
-        button {
-            margin-top: 0.8rem;
-        }
-        .calculator {
-            padding: 20px;   
-            }
+
     </style>
 </head>
 
@@ -113,11 +146,15 @@
             </div>
         </div>
         </div>
-            <button type='reset' id='resetButton'>Сбросить</button>
 
-        <div class='calculator__results'>
-            <h2>Итог: <span class='calculator__results__number' id='results_number'>10</span></h2>
+
+        <div class='calculator__footer'>
+            <div class='calculator__results'>
+                <h2>Итог: <span class='calculator__results__number' id='results_number'>10</span></h2>
+            </div>
+            <button type='reset' id='resetButton'>Сбросить</button>
         </div>
+
 
     </form>
 
